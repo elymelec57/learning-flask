@@ -2,10 +2,33 @@
 
 {% block content %}
 <h1>Hola, {{ current_user.username }}!</h1>
+
+{% if form %}
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.post.label }}<br>
+        {{ form.post(cols=32,rows=4)}}<br>
+        {% for error in form.post.errors %}
+        <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+{% endif %}
+
 {% for post in posts %}
-<div>
-    <p>{{ post.author.username }}</p>
-    <p>{{ post.body }}</p>
-</div>
+{% include '_post.html' %}
 {% endfor %}
+
+<div class="pagination">
+    <ul class="pagination-list">
+        {% if prev_url %}
+        <li class="pagination-item"><a href="{{ prev_url }}" class="pagination-link">Previous</a></li>
+        {% endif %}
+        {% if next_url %}
+        <li class="pagination-item"><a href="{{ next_url }}" class="pagination-link">Next</a></li>
+        {% endif %}
+    </ul>
+</div>
 {% endblock %}

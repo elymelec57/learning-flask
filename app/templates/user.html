@@ -36,8 +36,17 @@
 
 <hr>
 {% for post in posts %}
-<table>
-    {% include '_post.html' %}
-</table>
+{% include '_post.html' %}
 {% endfor %}
+
+<div class="pagination">
+    <ul class="pagination-list">
+        {% if prev_url %}
+        <li class="pagination-item"><a href="{{ prev_url }}" class="pagination-link">Previous</a></li>
+        {% endif %}
+        {% if next_url %}
+        <li class="pagination-item"><a href="{{ next_url }}" class="pagination-link">Next</a></li>
+        {% endif %}
+    </ul>
+</div>
 {% endblock %}
