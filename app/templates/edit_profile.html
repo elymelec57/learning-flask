@@ -1,9 +1,10 @@
 {% extends "base.html" %}
+{% import 'bootstrap_wft.html' as wft %}
 
 {% block content %}
 <h1>Edit Profile</h1>
-<form action="" method="post">
-    {{ form.hidden_tag() }}
+{{ wft.quick_form(form) }}
+<!-- <form action="" method="post">
     <p>
         {{ form.username.label }}<br>
         {{ form.username(size=32) }}
@@ -19,5 +20,5 @@
         {% endfor %}
     </p>
     <p>{{ form.submit() }}</p>
-</form>
+</form> -->
 {% endblock %}
