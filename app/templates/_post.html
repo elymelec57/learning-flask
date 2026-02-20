@@ -12,6 +12,8 @@
             says:
             <br>
             {{ post.body }}
+            <br>
+            <small>Posted on: {{ moment(post.timestamp).fromNow() }}</small>
         </td>
     </tr>
 </table>
