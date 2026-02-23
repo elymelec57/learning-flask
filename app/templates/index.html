@@ -2,7 +2,7 @@
 {% import 'bootstrap_wft.html' as wft %}
 
 {% block content %}
-<h1>Hola, {{ current_user.username }}!</h1>
+<h1>{{ _('Hi, %(username)s!', username=current_user.username) }}</h1>
 
 {% if form %}
 {{ wft.quick_form(form) }}

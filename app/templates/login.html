@@ -2,7 +2,7 @@
 {% import 'bootstrap_wft.html' as wft %}
 
 {% block content %}
-<h1>Sign In</h1>
+<h1>{{ _('Sign In') }}</h1>
 {{ wft.quick_form(form) }}
 <!-- <form action="" method="post" novalidate>
     {{ form.hidden_tag() }}
@@ -24,8 +24,8 @@
 </form> -->
 <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
 <p>
-    Forgot your password?
-    <a href="{{ url_for('reset_password_request') }}">Request Password Reset</a>
+    {{ _('Forgot your password?') }}
+    <a href="{{ url_for('reset_password_request') }}">{{ _('Request Password Reset') }}</a>
 </p>
 <p>{{ form.submit() }}</p>
 {% endblock %}
