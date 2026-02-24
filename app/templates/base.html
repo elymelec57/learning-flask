@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ g.locale }}">
 
 <head>
     <meta charset="utf-8">
@@ -73,6 +73,32 @@
         crossorigin="anonymous"></script>
     {{ moment.include_moment() }}
     {{ moment.lang(g.locale) }}
+    <script>
+        async function translate(sourceId, destId, sourceLang, destLang) {
+            console.log(sourceId, destId, sourceLang, destLang);
+            const destElem = document.getElementById(destId);
+            const sourceElem = document.getElementById(sourceId);
+            const originalHtml = destElem.innerHTML;
+            destElem.innerHTML = '<em>{{ _("Translating...") }}</em>';
+
+            try {
+                const response = await fetch('/translate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json; charset=utf-8' },
+                    body: JSON.stringify({
+                        text: sourceElem.innerText,
+                        source_language: sourceLang,
+                        dest_language: destLang
+                    })
+                });
+                if (!response.ok) throw new Error('Network response was not ok');
+                const data = await response.json();
+                destElem.innerText = data.text;
+            } catch (error) {
+                destElem.innerText = "{{ _('Error: Could not contact server.') }}";
+            }
+        }
+    </script>
 </body>
 
 </html>

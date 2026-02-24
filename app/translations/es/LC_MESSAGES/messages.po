@@ -252,3 +252,7 @@ msgstr "Seguir"
 #: app/templates/user.html:19
 msgid "Unfollow"
 msgstr "Dejar de seguir"
+
+#: app/templates/_post.html:19
+msgid "Translate"
+msgstr "Traducir"
