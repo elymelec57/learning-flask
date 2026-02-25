@@ -12,3 +12,4 @@ flask-babel
 langdetect
 requests
 google-genai
+urllib3==2.1.0
