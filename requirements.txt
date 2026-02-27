@@ -13,3 +13,4 @@ langdetect
 requests
 google-genai
 urllib3==2.1.0
+elasticsearch==8.17.0
