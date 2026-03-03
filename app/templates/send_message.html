@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% import 'bootstrap_wft.html' as wft %}
+
+{% block content %}
+<h1>{{ _('Send Message to %(recipient)s', recipient=recipient) }}</h1>
+{{ wft.quick_form(form) }}
+{% endblock %}
