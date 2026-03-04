@@ -11,6 +11,8 @@ import logging
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
 from elasticsearch import Elasticsearch
+from redis import Redis
+import rq
 
 
 def get_locale():
@@ -42,6 +44,9 @@ model_name = 'gemini-2.0-flash'
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
+
+    app.redis = Redis.from_url(app.config['REDIS_URL'])
+    app.task_queue = rq.Queue('main-tasks', connection=app.redis)
 
     db.init_app(app)
     migrate.init_app(app, db)
