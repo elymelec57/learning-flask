@@ -214,7 +214,7 @@ class Notification(db.Model):
     name: so.Mapped[str] = so.mapped_column(sa.String(128), index=True)
     user_id: so.Mapped[int] = so.mapped_column(sa.ForeignKey(User.id),
                                                index=True)
-    timestamp: so.Mapped[float] = so.mapped_column(index=True, default=time)
+    timestamp: so.Mapped[float] = so.mapped_column(index=True, default=time.time)
     payload_json: so.Mapped[str] = so.mapped_column(sa.Text)
 
     user: so.Mapped[User] = so.relationship(back_populates='notifications')
